@@ -24,7 +24,7 @@
 - Create tasks (always start with `Concluida = false`)
 - List all tasks
 - Update description
-- Complete task (marks as completed and records `dataConclusao`)
+- Complete task (marks as completed and records `DataConclusao`)
 - Delete task
 
 <h3>Prerequisites</h3>
@@ -54,7 +54,7 @@ http://localhost:8080/swagger-ui/index.html
 
 <h2 id="routes">📍 API Endpoints</h2>
 
-Here are listed the main endpoints.
+This is the list of the main endpoints.
 ​
 | route               | description                                          
 |----------------------|-----------------------------------------------------
@@ -100,3 +100,25 @@ Here are listed the main endpoints.
   "dataConclusao": "2026-01-19T15:00:00"
 }
 ```
+
+<h2> 🧪 Testes Automatizados </h2>
+
+ This project includes different types of tests to ensure quality and reliability.
+
+ ### 🔹 Unit Tests ([Service Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaServiceTest.java)) 
+ 
+ - They validate isolated methods of the service layer using **JUnit 5** and **Mockito**.
+
+ ### 🔹 Integration Tests ([Controller Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaControllerTest.java))
+
+ - They simulate HTTP requests using **MockMvc**.
+
+### 🔹 Repository Tests ([JPA Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaRepositoryTest.java))
+
+- They validate persistence with an in-memory database (**H2**).
+
+### 🔹 Validation Tests ([DTO Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaRequestDTOTest.java))
+
+- Ensure that the validation rules (`@NotBlank`) work.
+
+
