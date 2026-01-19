@@ -20,6 +20,7 @@
 - H2 Database (for testing)
 
 <h2 id="Features">🚀 Features</h2>
+
 - Create tasks (always start with `Concluida = false`)
 - List all tasks
 - Update description
@@ -40,14 +41,13 @@ how to run your project locally
 git clone your-project-url-in-github
 ```
 
-<h3>▶️ Como rodar </h3>
-
-How to start your project
+<h3>▶️ How to start your project </h3>
 
 ```bash
 cd project-name
 mvn spring-boot:run
 ```
+
 Access Swagger at:
 
 http://localhost:8080/swagger-ui/index.html
