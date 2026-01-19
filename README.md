@@ -24,12 +24,12 @@
 - Create tasks (always start with `Concluida = false`)
 - List all tasks
 - Update description
-- Complete task (marks as completed and records `completionDate`)
+- Complete task (marks as completed and records `dataConclusao`)
 - Delete task
 
 <h3>Prerequisites</h3>
 
-- [Java21+]
+- Java21+
 
 <h2 id="started">🚀 Getting started</h2>
 
@@ -41,7 +41,7 @@ how to run your project locally
 git clone your-project-url-in-github
 ```
 
-<h3>▶️ How to start your project </h3>
+<h3>▶ How to start your project </h3>
 
 ```bash
 cd project-name
