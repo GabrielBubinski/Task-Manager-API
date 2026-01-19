@@ -4,11 +4,12 @@
  <a href="#technologies">Technologies</a> • 
  <a href="#Features">Features</a> • 
  <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a> •
+ <a href="#routes">API Endpoints</a> •
+ <a href="#Test">Automated Testing</a> •
 </p>
 
 <p align="center">
-    <b>Task management API developed in **Spring Boot**.</b>
+    <b>Task management API developed in Spring Boot.</b>
 </p>
 
 <h2 id="technologies">💻 Technologies</h2>
@@ -101,7 +102,7 @@ This is the list of the main endpoints.
 }
 ```
 
-<h2> 🧪 Automated Testing </h2>
+<h2 id="Test"> 🧪 Automated Testing </h2>
 
  This project includes different types of tests to ensure quality and reliability.
 
