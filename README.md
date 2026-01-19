@@ -101,7 +101,7 @@ This is the list of the main endpoints.
 }
 ```
 
-<h2> 🧪 Testes Automatizados </h2>
+<h2> 🧪 Automated Testing </h2>
 
  This project includes different types of tests to ensure quality and reliability.
 
