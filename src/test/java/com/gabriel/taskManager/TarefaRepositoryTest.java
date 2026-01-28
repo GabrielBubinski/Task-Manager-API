@@ -21,9 +21,9 @@ public class TarefaRepositoryTest {
     void deveSalvarETrazerTarefa() {
         Tarefa tarefa = new Tarefa();
         tarefa.setDescricao("Testar JPA");
-        tarefa.setConcluida(false);
+        tarefa.setStatus(false);
         Tarefa salva = tarefaRepository.save(tarefa);
-        java.util.Optional<Tarefa> encontrada = tarefaRepository.findById(salva.getId());
+        java.util.Optional<Tarefa> encontrada = tarefaRepository.findById(salva.getTarefa_id());
         assertTrue(encontrada.isPresent());
         assertEquals("Testar JPA", encontrada.get().getDescricao());
     }

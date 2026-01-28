@@ -28,14 +28,14 @@ public class TarefaServiceTest {
     @Test
     void deveCriarTarefaComDescricao() {
         Tarefa tarefa = new Tarefa();
-        tarefa.setId(1L);
+        tarefa.setTarefa_id(1L);
         tarefa.setDescricao("Estudar Spring Boot");
-        tarefa.setConcluida(false);
+        tarefa.setStatus(false);
         when(tarefaRepository.save(any(Tarefa.class))).thenReturn(tarefa);
         TarefaRequestDTO request = new TarefaRequestDTO();
         request.setDescricao("Estudar Spring Boot");
         TarefaResponseDTO response = tarefaService.criar(request);
         assertEquals("Estudar Spring Boot", response.getDescricao());
-        assertFalse(response.isConcluida());
+        assertFalse(response.isStatus());
     }
 }

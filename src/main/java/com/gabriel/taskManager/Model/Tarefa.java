@@ -9,35 +9,35 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tarefa")
+@Table(name = "task_table")
 public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long tarefa_id;
     public String descricao;
-    public Boolean concluida;
+    public Boolean status;
     public LocalDateTime dataCriacao;
     public LocalDateTime dataConclusao;
 
     public Tarefa() {
     }
 
-    public Tarefa(long id, String descricao, Boolean concluida, LocalDateTime dataCriacao,
+    public Tarefa(long tarefa_id, String descricao, Boolean status, LocalDateTime dataCriacao,
             LocalDateTime dataConclusao) {
-        this.id = id;
+        this.tarefa_id = tarefa_id;
         this.descricao = descricao;
-        this.concluida = concluida = false;
+        this.status = status = false;
         this.dataCriacao = dataCriacao;
         this.dataConclusao = dataConclusao;
     }
 
-    public Long getId() {
-        return id;
+    public Long getTarefa_id() {
+        return tarefa_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTarefa_id(Long tarefa_id) {
+        this.tarefa_id = tarefa_id;
     }
 
     public String getDescricao() {
@@ -48,12 +48,12 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public boolean isConcluida() {
-        return concluida;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setConcluida(boolean concluida) {
-        this.concluida = concluida;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public LocalDateTime getDataCriacao() {

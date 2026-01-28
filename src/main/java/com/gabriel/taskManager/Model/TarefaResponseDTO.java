@@ -3,12 +3,13 @@ package com.gabriel.taskManager.Model;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TarefaResponseDTO {
 
     public Long id;
     public String descricao;
-    public boolean concluida;
+    public boolean status;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataCriacao;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -30,12 +31,12 @@ public class TarefaResponseDTO {
         this.descricao = descricao;
     }
 
-    public boolean isConcluida() {
-        return concluida;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setConcluida(boolean concluida) {
-        this.concluida = concluida;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public LocalDateTime getDataCriacao() {
@@ -52,6 +53,18 @@ public class TarefaResponseDTO {
 
     public void setDataConclusao(LocalDateTime dataConclusao) {
         this.dataConclusao = dataConclusao;
+    }
+
+    @JsonProperty("status")
+    public String getStatusDescricao() {
+        return status ? "Concluído" : "Pendente";
+    }
+
+    @JsonProperty("dataConclusao")
+    public String getDataConclusaoFormatada() {
+        return dataConclusao != null
+                ? dataConclusao.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
+                : "Ainda não concluída";
     }
 
 }

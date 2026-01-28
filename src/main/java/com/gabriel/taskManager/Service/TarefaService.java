@@ -21,9 +21,9 @@ public class TarefaService {
     // Conversão Entidade -> ResponseDTO
     private TarefaResponseDTO convertToResponseDTO(Tarefa tarefa) {
         TarefaResponseDTO dto = new TarefaResponseDTO();
-        dto.setId(tarefa.getId());
+        dto.setId(tarefa.getTarefa_id());
         dto.setDescricao(tarefa.getDescricao());
-        dto.setConcluida(tarefa.isConcluida());
+        dto.setStatus(tarefa.isStatus());
         dto.setDataCriacao(tarefa.getDataCriacao());
         dto.setDataConclusao(tarefa.getDataConclusao());
         return dto;
@@ -48,7 +48,7 @@ public class TarefaService {
     public TarefaResponseDTO criar(TarefaRequestDTO dto) {
         Tarefa tarefa = new Tarefa();
         tarefa.setDescricao(dto.getDescricao());
-        tarefa.setConcluida(false);
+        tarefa.setStatus(false);
         tarefa.setDataCriacao(LocalDateTime.now());
         tarefaRepository.save(tarefa);
         return convertToResponseDTO(tarefa);
@@ -65,7 +65,7 @@ public class TarefaService {
 
     public TarefaResponseDTO updateTarefaConcluida(Long id) {
         return tarefaRepository.findById(id).map(tarefa -> {
-            tarefa.setConcluida(true);
+            tarefa.setStatus(true);
             tarefa.setDataConclusao(LocalDateTime.now());
             tarefaRepository.save(tarefa);
             return convertToResponseDTO(tarefa);
@@ -83,7 +83,7 @@ public class TarefaService {
 
     public TarefaResponseDTO concluirTarefa(Long id) {
         return tarefaRepository.findById(id).map(tarefa -> {
-            tarefa.setConcluida(true);
+            tarefa.setStatus(true);
             tarefa.setDataConclusao(LocalDateTime.now());
             tarefaRepository.save(tarefa);
             return convertToResponseDTO(tarefa);
