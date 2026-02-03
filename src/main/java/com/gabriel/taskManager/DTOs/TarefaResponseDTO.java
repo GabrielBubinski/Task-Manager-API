@@ -1,4 +1,4 @@
-package com.gabriel.taskManager.Model;
+package com.gabriel.taskManager.DTOs;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TarefaResponseDTO {
 
-    public Long id;
+    public Long tarefaId;
     public String descricao;
     public boolean status;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -15,12 +15,21 @@ public class TarefaResponseDTO {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataConclusao;
 
-    public Long getId() {
-        return id;
+    public TarefaResponseDTO(Long tarefaId, String descricao, boolean status, LocalDateTime dataCriacao, LocalDateTime dataConclusao) {
+        this.tarefaId = tarefaId;
+        this.descricao = descricao;
+        this.status = status;
+        this.dataCriacao = dataCriacao;
+        this.dataConclusao = dataConclusao;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public Long getTarefaId() {
+        return tarefaId;
+    }
+
+    public void setTarefaId(Long tarefaId) {
+        this.tarefaId = tarefaId;
     }
 
     public String getDescricao() {
@@ -66,5 +75,4 @@ public class TarefaResponseDTO {
                 ? dataConclusao.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
                 : "Ainda não concluída";
     }
-
 }
