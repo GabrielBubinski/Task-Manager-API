@@ -2,39 +2,50 @@
 
 <p align="center">
  <a href="#technologies">Technologies</a> • 
- <a href="#Features">Features</a> • 
+ <a href="#features">Features</a> • 
  <a href="#started">Getting Started</a> • 
+ <a href="#auth">Authentication</a> •
  <a href="#routes">API Endpoints</a> •
- <a href="#Test">Automated Testing</a> •
 </p>
 
 <p align="center">
-    <b>Task management API developed in Spring Boot.</b>
+    <b>Task management API developed in Spring Boot with JWT authentication.</b>
 </p>
+
+---
 
 <h2 id="technologies">💻 Technologies</h2>
 
 - Java 21 
 - Spring Boot 
 - Spring Data JPA 
-- Swagger/OpenAPI 
+- Spring Security + JWT 
+- Swagger/OpenAPI (with JWT Authorize button) 
 - H2 Database (for testing)
 
-<h2 id="Features">🚀 Features</h2>
+---
 
-- Create tasks (always start with `Concluida = false`)
+<h2 id="features">🚀 Features</h2>
+
+- User registration and login with JWT authentication
+- Secure endpoints with Spring Security
+- Create tasks (always start with `concluida = false`)
 - List all tasks
 - Update description
-- Complete task (marks as completed and records `DataConclusao`)
+- Complete task (marks as completed and records `dataConclusao`)
 - Delete task
+- Interactive API documentation with Swagger UI
+
+---
 
 <h3>Prerequisites</h3>
 
-- Java21+
+- Java 21+
+- Maven
+
+---
 
 <h2 id="started">🚀 Getting started</h2>
-
-how to run your project locally 
 
 <h3>Cloning</h3>
 
@@ -51,12 +62,61 @@ mvn spring-boot:run
 
 Access Swagger at:
 
-http://localhost:8080/swagger-ui/index.html
+👉 http://localhost:8080/swagger-ui/index.html
+
+<h2 id="auth">🔐 Authentication</h2>
+
+This API uses JWT (JSON Web Token) for authentication.
+
+**Register a new user:**
+- EndPoint:
+`POST /users`
+- Register Request Exemple:
+```bash
+{
+  "username": "gabriel",
+  "password": "123456"
+}
+```
+
+**Login to get a JWT token:**
+- EndPoint:
+`POST /login`
+
+- Login Request Example:
+
+```bash
+{
+  "username": "gabriel",
+  "password": "123456"
+}
+```
+- Login Response Example:
+
+```bash
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+}
+```
+
+**After login, copy the token and click Authorize in Swagger UI.**
+
+Insert the token in the format:
+```bash
+Bearer <your_token>
+```
+Now you can access protected endpoints.
 
 <h2 id="routes">📍 API Endpoints</h2>
 
-This is the list of the main endpoints.
-​
+*<h3 id="public-points">Public Endpoints</h3>*
+
+| route               | description                                          
+|----------------------|-----------------------------------------------------
+| <kbd>POST /users</kbd>     | register a new user 
+| <kbd>POST /login</kbd>     | login and receive JWT token
+
+*<h3 id="routes">Protected Endpoints (require JWT)</h3>*
 | route               | description                                          
 |----------------------|-----------------------------------------------------
 | <kbd>POST /tarefas</kbd>     | creates a new task [request details](#post-task-detail)
@@ -83,9 +143,9 @@ This is the list of the main endpoints.
 {
   "id": 1,
   "descricao": "Estudar Spring Boot",
-  "concluida": false,
+  "status": "Pendente",
   "dataCriacao": "2026-01-19T14:45:00",
-  "dataConclusao": null
+  "dataConclusao": "Ainda não concluída"
 }
 ```
 
@@ -96,30 +156,8 @@ This is the list of the main endpoints.
 {
   "id": 1,
   "descricao": "Estudar Spring Boot",
-  "concluida": true,
+  "status": "Concluído",
   "dataCriacao": "2026-01-19T14:45:00",
   "dataConclusao": "2026-01-19T15:00:00"
 }
 ```
-
-<h2 id="Test"> 🧪 Automated Testing </h2>
-
- This project includes different types of tests to ensure quality and reliability.
-
- ### 🔹 Unit Tests ([Service Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaServiceTest.java)) 
- 
- - They validate isolated methods of the service layer using **JUnit 5** and **Mockito**.
-
- ### 🔹 Integration Tests ([Controller Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaControllerTest.java))
-
- - They simulate HTTP requests using **MockMvc**.
-
-### 🔹 Repository Tests ([JPA Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaRepositoryTest.java))
-
-- They validate persistence with an in-memory database (**H2**).
-
-### 🔹 Validation Tests ([DTO Test](https://github.com/GabrielBubinski/Task-Manager-API/blob/main/src/test/java/com/gabriel/taskManager/TarefaRequestDTOTest.java))
-
-- Ensure that the validation rules (`@NotBlank`) work.
-
-
