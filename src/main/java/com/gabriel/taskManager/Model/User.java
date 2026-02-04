@@ -35,6 +35,16 @@ public class User {
     @JoinTable(name = "tb_users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    public User() {
+    }
+
+    public User(UUID userId, String username, String password, Set<Role> roles) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public UUID getUserId() {
         return userId;
     }

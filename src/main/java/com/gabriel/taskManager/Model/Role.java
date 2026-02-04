@@ -17,6 +17,14 @@ public class Role {
     private Long roleId;
     private String name;
 
+    public Role() {
+    }
+
+    public Role(Long roleId, String name) {
+    this.roleId = roleId;
+    this.name = name;
+}
+
     public Long getRoleId() {
         return roleId;
     }
