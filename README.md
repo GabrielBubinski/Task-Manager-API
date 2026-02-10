@@ -21,7 +21,7 @@
 - Spring Data JPA 
 - Spring Security + JWT 
 - Swagger/OpenAPI (with JWT Authorize button) 
-- H2 Database (for testing)
+- Docker & Docker Compose (to run MySQL)
 
 ---
 
@@ -42,6 +42,7 @@
 
 - Java 21+
 - Maven
+- Docker
 
 ---
 
@@ -57,6 +58,9 @@ git clone your-project-url-in-github
 
 ```bash
 cd project-name
+
+docker-compose up 
+
 mvn spring-boot:run
 ```
 
