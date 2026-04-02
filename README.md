@@ -1,44 +1,44 @@
 <h1 align="center" style="font-weight: bold;">Task Manager API 💻</h1>
 
 <p align="center">
- <a href="#technologies">Technologies</a> • 
- <a href="#features">Features</a> • 
- <a href="#started">Getting Started</a> • 
- <a href="#auth">Authentication</a> •
- <a href="#routes">API Endpoints</a> •
+<a href="#technologies">Tecnologias</a> •
+<a href="#features">Funcionalidades</a> •
+<a href="#started">Como começar</a> •
+<a href="#auth">Autenticação</a> •
+<a href="#routes">Endpoints da API</a> •
 </p>
 
 <p align="center">
-    <b>Task management API developed in Spring Boot with JWT authentication.</b>
+<b>API de gerenciamento de tarefas desenvolvida em Spring Boot com autenticação JWT.</b>
 </p>
 
 ---
 
-<h2 id="technologies">💻 Technologies</h2>
+<h2 id="technologies">💻 Tecnologias</h2>
 
 - Java 21 
 - Spring Boot 
 - Spring Data JPA 
 - Spring Security + JWT 
-- Swagger/OpenAPI (with JWT Authorize button) 
-- Docker & Docker Compose (to run MySQL)
+- Swagger/OpenAPI (com botão de autorização JWT)
+- Docker & Docker Compose (para rodar MySQL)
 
 ---
 
-<h2 id="features">🚀 Features</h2>
+<h2 id="features">🚀 Funcionalidades</h2>
 
-- User registration and login with JWT authentication
-- Secure endpoints with Spring Security
-- Create tasks (always start with `concluida = false`)
-- List all tasks
-- Update description
-- Complete task (marks as completed and records `dataConclusao`)
-- Delete task
-- Interactive API documentation with Swagger UI
+- Cadastro e login de usuários com autenticação JWT
+- Endpoints seguros com Spring Security
+- Criar tarefas
+- Listar todas as tarefas
+- Atualizar descrição
+- Concluir tarefa
+- Excluir tarefa
+- Documentação interativa da API com Swagger UI
 
 ---
 
-<h3>Prerequisites</h3>
+<h3>Pré-requisitos</h3>
 
 - Java 21+
 - Maven
@@ -46,36 +46,39 @@
 
 ---
 
-<h2 id="started">🚀 Getting started</h2>
+<h2 id="started">🚀 Como começar</h2>
 
-<h3>Cloning</h3>
+<h3>Clonando</h3>
 
 ```bash
-git clone your-project-url-in-github
+git clone url-do-projeto-no-github
+
 ```
 
-<h3>▶ How to start your project </h3>
+<h3>▶ Como iniciar o projeto </h3>
 
 ```bash
-cd project-name
+cd nome-do-projeto
+
+cd pasta-do-docker
 
 docker-compose up 
 
 mvn spring-boot:run
 ```
 
-Access Swagger at:
+Acesse o Swagger em:
 
 👉 http://localhost:8080/swagger-ui/index.html
 
-<h2 id="auth">🔐 Authentication</h2>
+<h2 id="auth">🔐 Autenticação</h2>
 
-This API uses JWT (JSON Web Token) for authentication.
+Esta API utiliza JWT (JSON Web Token) para autenticação.
 
-**Register a new user:**
+**Registrar novo usuário:**
 - EndPoint:
 `POST /users`
-- Register Request Exemple:
+- Exemplo de requisição:
 ```bash
 {
   "username": "gabriel",
@@ -83,11 +86,11 @@ This API uses JWT (JSON Web Token) for authentication.
 }
 ```
 
-**Login to get a JWT token:**
+**Login para obter o token JWT:**
 - EndPoint:
 `POST /login`
 
-- Login Request Example:
+- Exemplo de requisição:
 
 ```bash
 {
@@ -95,7 +98,7 @@ This API uses JWT (JSON Web Token) for authentication.
   "password": "123456"
 }
 ```
-- Login Response Example:
+- Exemplo de resposta:
 
 ```bash
 {
@@ -103,32 +106,32 @@ This API uses JWT (JSON Web Token) for authentication.
 }
 ```
 
-**After login, copy the token and click Authorize in Swagger UI.**
+**Após o login, copie o token e clique em Authorize no Swagger UI.**
 
-Insert the token in the format:
+Insira o token no formato:
 ```bash
 Bearer <your_token>
 ```
-Now you can access protected endpoints.
+Agora você pode acessar os endpoints protegidos.
 
-<h2 id="routes">📍 API Endpoints</h2>
+<h2 id="routes">📍 Endpoints da API</h2>
 
-*<h3 id="public-points">Public Endpoints</h3>*
+*<h3 id="public-points">Endpoints Públicos</h3>*
 
 | route               | description                                          
 |----------------------|-----------------------------------------------------
-| <kbd>POST /users</kbd>     | register a new user 
-| <kbd>POST /login</kbd>     | login and receive JWT token
+| <kbd>POST /users</kbd>     | cadastrar novo usuário
+| <kbd>POST /login</kbd>     | login e receber token JWT
 
-*<h3 id="routes">Protected Endpoints (require JWT)</h3>*
+*<h3 id="routes">Endpoints Protegidos (requer JWT)</h3>*
 | route               | description                                          
 |----------------------|-----------------------------------------------------
-| <kbd>POST /tarefas</kbd>     | creates a new task [request details](#post-task-detail)
-| <kbd>PATCH /tarefas/{id}/concluir</kbd>     |  marks as completed [response details](#patch-task-detail)
-| <kbd>GET /tarefas</kbd>     | lists all tasks 
-| <kbd>GET /tarefas/{id}</kbd>     |  fetches task by ID 
-| <kbd>PUT /tarefas/{id}</kbd>     | updates description 
-| <kbd>DELETE /tarefas/{id}</kbd>     | deletes task 
+| <kbd>POST /tarefas</kbd>     | cria nova tarefa [detalhes](#post-task-detail)
+| <kbd>PATCH /tarefas/{id}/concluir</kbd>     |  marca como concluída [detalhes](#patch-task-detail)
+| <kbd>GET /tarefas</kbd>     | lista todas as tarefas
+| <kbd>GET /tarefas/{id}</kbd>     |  busca tarefa por ID 
+| <kbd>PUT /tarefas/{id}</kbd>     | atualiza descrição 
+| <kbd>DELETE /tarefas/{id}</kbd>     | exclui tarefa 
 
 
 

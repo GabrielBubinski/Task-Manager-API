@@ -19,7 +19,6 @@ import com.gabriel.taskManager.Repository.UserRepository;
 public class TarefaService {
 
     private final TarefaRepository tarefaRepository;
-
     private final UserRepository userRepository;
 
     public TarefaService(TarefaRepository tarefaRepository, UserRepository userRepository) {
@@ -27,7 +26,6 @@ public class TarefaService {
         this.userRepository = userRepository;
     }
 
-    // Conversão Entidade -> ResponseDTO
     private TarefaResponseDTO toResponseDTO(Tarefa tarefa) {
         return new TarefaResponseDTO(
                 tarefa.getTarefaId(),
@@ -37,7 +35,6 @@ public class TarefaService {
                 tarefa.getDataConclusao());
     }
 
-    // Get all
     public List<TarefaResponseDTO> getAll(JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         return tarefaRepository.findByUser_UserId(userId)
@@ -46,7 +43,6 @@ public class TarefaService {
                 .toList();
     }
 
-    // Get by Id
     public TarefaResponseDTO getById(Long tarefaId, JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         return tarefaRepository.findByTarefaIdAndUser_UserId(tarefaId, userId)
@@ -54,7 +50,6 @@ public class TarefaService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    // Update descrição tarefa
     public TarefaResponseDTO update(Long tarefaId, TarefaRequestDTO dto, JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         Tarefa tarefa = tarefaRepository.findByTarefaIdAndUser_UserId(tarefaId, userId)
@@ -65,7 +60,6 @@ public class TarefaService {
         return toResponseDTO(tarefa);
     }
 
-    // Concluir tarefa
     public TarefaResponseDTO concluir(Long tarefaId, JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         Tarefa tarefa = tarefaRepository.findByTarefaIdAndUser_UserId(tarefaId, userId)
@@ -77,7 +71,6 @@ public class TarefaService {
         return toResponseDTO(tarefa);
     }
 
-    // Create tarefa
     public TarefaResponseDTO create(TarefaRequestDTO dto, JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         var user = userRepository.findById(userId)
@@ -92,7 +85,6 @@ public class TarefaService {
         return toResponseDTO(tarefa);
     }
 
-    // Delete tarefa
     public void delete(Long tarefaId, JwtAuthenticationToken token) {
         UUID userId = UUID.fromString(token.getName());
         var tarefa = tarefaRepository.findById(tarefaId)
