@@ -1,12 +1,29 @@
 services:
   mysql:
     image: mysql
+    container_name: mysql_db
+    restart: always
     ports:
       - "3307:3306"
     expose: 
       - "3306"
     environment:
+      - MYSQL_ROOT_PASSWORD=123
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=123
       - MYSQL_DATABASE=mydb
-      - MYSQL_ROOT_PASSWORD=123
+  backend:
+    build: 
+      context: ..
+      dockerfile: Dockerfile
+    container_name: taskmanager_backend
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: 123
+    ports:
+      - "8080:8080"
+
