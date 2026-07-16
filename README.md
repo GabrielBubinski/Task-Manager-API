@@ -21,7 +21,7 @@
 - Spring Data JPA 
 - Spring Security + JWT 
 - Swagger/OpenAPI (com botão de autorização JWT)
-- Docker & Docker Compose (para rodar MySQL)
+- Docker & Docker Compose (para rodar aplicação e banco MySQL)
 
 ---
 
@@ -40,9 +40,8 @@
 
 <h3>Pré-requisitos</h3>
 
-- Java 21+
-- Maven
 - Docker
+- Docker Compose
 
 ---
 
@@ -53,18 +52,13 @@
 ```bash
 git clone url-do-projeto-no-github
 
+cd nome-do-projeto
 ```
 
 <h3>▶ Como iniciar o projeto </h3>
 
 ```bash
-cd nome-do-projeto
-
-cd pasta-do-docker
-
 docker-compose up 
-
-mvn spring-boot:run
 ```
 
 Acesse o Swagger em:
@@ -106,7 +100,7 @@ Esta API utiliza JWT (JSON Web Token) para autenticação.
 }
 ```
 
-**Após o login, copie o token e clique em Authorize no Swagger UI.**
+**Após o login, copie o token e clique em Authorize no Swagger UI ou**
 
 Insira o token no formato:
 ```bash
@@ -126,12 +120,12 @@ Agora você pode acessar os endpoints protegidos.
 *<h3 id="routes">Endpoints Protegidos (requer JWT)</h3>*
 | route               | description                                          
 |----------------------|-----------------------------------------------------
-| <kbd>POST /tarefas</kbd>     | cria nova tarefa [detalhes](#post-task-detail)
-| <kbd>PATCH /tarefas/{id}/concluir</kbd>     |  marca como concluída [detalhes](#patch-task-detail)
-| <kbd>GET /tarefas</kbd>     | lista todas as tarefas
-| <kbd>GET /tarefas/{id}</kbd>     |  busca tarefa por ID 
-| <kbd>PUT /tarefas/{id}</kbd>     | atualiza descrição 
-| <kbd>DELETE /tarefas/{id}</kbd>     | exclui tarefa 
+| <kbd>POST /tarefas</kbd>     | Criar novas tarefas [detalhes](#post-task-detail)
+| <kbd>PATCH /tarefas/{id}/concluir</kbd>     |  Marcar como concluída [detalhes](#patch-task-detail)
+| <kbd>GET /tarefas</kbd>     | Listar todas as tarefas
+| <kbd>GET /tarefas/{id}</kbd>     |  Buscar tarefa por ID 
+| <kbd>PUT /tarefas/{id}</kbd>     | Atualizar descrição 
+| <kbd>DELETE /tarefas/{id}</kbd>     | Excluir tarefa 
 
 
 
